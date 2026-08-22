@@ -1,0 +1,15 @@
+{
+  "name": "综合教资备考工作台",
+  "short_name": "教资备考",
+  "author": "BadCodeZ",
+  "description": "中小学教师资格证（教资）备考一站式工作台（离线单文件）· 作者 BadCodeZ",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#F4EFE3",
+  "theme_color": "#2F6B57",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
