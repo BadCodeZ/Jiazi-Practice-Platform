@@ -11,7 +11,7 @@
 **jiazi-practice-platform** is a **single-file offline web application** for Chinese Teacher Certification (教师资格证) exam preparation. It runs entirely in your browser — no installation, no registration, no server required. All your study data stays on your own device.
 
 - **Author**: BadCodeZ
-- **Version**: V1 (meta 1.0) · SW artwb-v2
+- **Version**: V1.1 (meta 2.0) · SW artwb-v2
 - **File**: `综合教资备考工作台.html` (2.95 MB)
 - **Questions**: 3,342 built-in questions covering all exam subjects
 - **Subjects**: 17 secondary school subjects (科三)
@@ -47,7 +47,7 @@
 ### Technical Details
 
 - **Build**: Single-file HTML (all CSS, JS, and data inlined)
-- **MD5**: `8d747c2710436c415cd6b2148a4f4b50`
+- **MD5**: `7c10091b03f64b71083399b0a2c705cf`
 - **PWA**: Service worker `artwb-v2` for offline caching (requires http(s) access)
 - **Data format**: AES-GCM encrypted sync packages (`SYNCPKG1`)
 - **Dependencies**: pdf.js, mammoth.js (loaded on demand for document parsing)
@@ -61,7 +61,7 @@
 **jiazi-practice-platform** 是一个**单文件离线网页应用**，用于教师资格证考试备考。它不需要安装、不需要注册、不需要服务器，打开浏览器就能用，所有学习数据只存在你自己的设备上。
 
 - **作者**: BadCodeZ
-- **版本**: V1（meta 1.0）· SW artwb-v2
+- **版本**: V1.1（meta 2.0）· SW artwb-v2
 - **文件**: `综合教资备考工作台.html`（2.95 MB）
 - **题量**: 3342 道内置题，覆盖全部考试科目
 - **学科**: 17 个科三学科
@@ -190,7 +190,7 @@ A: 离线环境自动降级为手动粘贴。CAJ 文件请先转 PDF。
 ### 给分享者
 
 - **单文件分发**：直接分享 `综合教资备考工作台.html` 一个文件即可（约 2.95 MB）
-- **保留署名**：保留作者 **BadCodeZ** 与「正式版 V1」标识
+- **保留署名**：保留作者 **BadCodeZ** 与「正式版 V1.1」标识
 - **覆盖 html 不影响用户数据**：用同名新 html 覆盖，浏览器 `localStorage` 中的 `artwb_v2_data` 不动，用户记录保留
 - **版本线提醒**：网页端 V1（meta 1.0）与安卓端版本号互不对齐属正常，仅数据互通
 
@@ -199,8 +199,8 @@ A: 离线环境自动降级为手动粘贴。CAJ 文件请先转 PDF。
 | 项目 | 值 |
 |------|------|
 | 文件 | 综合教资备考工作台.html |
-| 大小 | 2.95 MB（3,097,447 字节） |
-| MD5 | `8d747c2710436c415cd6b2148a4f4b50` |
+| 大小 | 2.95 MB（3,097,824 字节） |
+| MD5 | `7c10091b03f64b71083399b0a2c705cf` |
 | 内部版本 | meta 1.0 |
 | SW 版本 | artwb-v2 |
 | 内置题量 | 3342 道 |

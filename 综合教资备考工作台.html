@@ -1,4 +1,4 @@
-<!-- 综合教资备考工作台 · 正式版 V1  |  作者 / Author：BadCodeZ  |  单文件离线应用，数据存于本机浏览器 localStorage，不上传服务器 -->
+<!-- 综合教资备考工作台 · 正式版 V1.1  |  作者 / Author：BadCodeZ  |  单文件离线应用，数据存于本机浏览器 localStorage，不上传服务器 -->
 <!DOCTYPE html>
 <html lang="zh-CN" data-theme="light">
 <head>
@@ -613,7 +613,7 @@ hr.sep{border:0;border-top:1px solid var(--border);margin:18px 0;}
     <button class="nav-btn" data-go="search"><span class="icon" data-i="search"></span>搜索</button>
     <button class="nav-btn" data-go="ai"><span class="icon" data-i="ai"></span>AI 帮手</button>
     <button class="nav-btn" data-go="settings"><span class="icon" data-i="settings"></span>设置与数据</button>
-    <div class="nav-foot">综合教资备考工作台 · 正式版 V1<br>离线单文件 · 数据存于本机浏览器<br>作者 BadCodeZ</div>
+    <div class="nav-foot">综合教资备考工作台 · 正式版 V1.1<br>离线单文件 · 数据存于本机浏览器<br>作者 BadCodeZ</div>
   </aside>
   <div class="scrim" id="scrim" data-act="closeSidebar"></div>
   <main>
@@ -60711,7 +60711,7 @@ function defaultState(){
     meta:{version:'2.0',seeded:false,builtinBankV3:false,knowHash:null,targetDay:null,subj3:'美术',proofTab:null,
       milestones:[],font:{size:'md',family:'system'},theme:'system',accent:'jade',
       createdAt:todayStr(),updatedAt:todayStr(),history:[],days:{},log:[
-        {date:todayStr(),text:'综合教资备考工作台 正式版V1 初始化',need:false}
+        {date:todayStr(),text:'综合教资备考工作台 正式版V1.1 初始化',need:false}
       ]}
   };
 }
@@ -60793,7 +60793,7 @@ function autoBackup(){
 }
 function migrateLesson(l){ if(!l)return l; var n=normalizeLesson(l); for(var k in n){ if(l[k]===undefined)l[k]=n[k]; } if(!l.id)l.id=uid(); return l; }
 function migrate(){
-  if(S.meta.version!=='1.0'){S.meta.version='1.0';}
+  if(S.meta.version!=='1.1'){S.meta.version='1.1';}
   S.lesson=(S.lesson||[]).map(migrateLesson);
   S.exam.forEach(function(e){if(e.cause===undefined)e.cause=[];});
 }
@@ -63326,15 +63326,18 @@ function _doPush(){
   syncEncrypt(SYNC_PASS||'',doc).then(function(r){ var blob=(r.enc?'SYNCPKG1:':'')+r.data; return SyncAdapter.push(blob); }).then(function(){ syncClearErr(); }).catch(function(e){ syncWarn('自动推送失败：'+(e&&e.message||e)); });
 }
 function syncExportPkg(){
+  save(); // 先落盘，确保导出内容反映最新数据
   var doc=buildSyncDoc();
-  if(SYNC.encrypt && !_syncHasSubtle()){ alert('已开启“同步加密”，但当前环境不支持 WebCrypto（需 https/localhost）。请改用 https 打开，或暂时关闭“同步加密”导出明文包。'); return; }
-  if(SYNC.encrypt && !SYNC_PASS){ alert('已开启“同步加密”，但尚未填写「同步口令」。请先在上方填写两端一致的口令再导出。'); return; }
+  if(SYNC.encrypt && !_syncHasSubtle()){ alert('当前已开启“同步加密”，但当前环境不支持 WebCrypto（需 https/localhost）。请改用 https 打开，或暂时关闭“同步加密”导出明文包。'); return; }
+  if(SYNC.encrypt && !SYNC_PASS){ alert('当前已开启“同步加密”，但尚未填写「同步口令」。请先在上方填写两端一致的口令再导出。'); return; }
   syncEncrypt(SYNC_PASS||'',doc).then(function(r){
     var blob=(r.enc?'SYNCPKG1:':'')+r.data;
-    var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([blob],{type:'text/plain'}));
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([blob],{type:'text/plain'}));
     a.download='artwb_同步包_'+(SYNC.vault||'default')+'_'+todayStr()+(r.enc?'.syncpkg':'')+'.json';
-    a.click();
-    syncSetStatus('已导出同步包（'+(r.enc?'AES-GCM 加密':'明文')+' · v'+doc.v+' · 含'+doc.exam.length+'题/'+(Object.keys(doc.corrections).length)+'错题），可存任意位置。');
+    document.body.appendChild(a); // 挂载到 DOM 才可真正触发下载（异步回调丢了用户手势，浏览器会拦截离屏 a.click）
+    try{ a.click(); }finally{ setTimeout(function(){ try{ URL.revokeObjectURL(a.href); }catch(_e){} if(a.parentNode)a.parentNode.removeChild(a); },0); }
+    syncSetStatus('已导出同步包（'+(r.enc?'AES-GCM 加密':'明文')+' · v'+doc.v+' · 含'+doc.exam.length+'题/'+Object.keys(doc.corrections).length+'错题），已触发浏览器下载。');
   }).catch(function(e){ syncSetStatus('导出失败：'+(e&&e.message||e)); });
 }
 function handleSyncImportFile(el){
