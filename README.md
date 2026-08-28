@@ -11,8 +11,8 @@
 **jiazi-practice-platform** is a **single-file offline web application** for Chinese Teacher Certification (教师资格证) exam preparation. It runs entirely in your browser — no installation, no registration, no server required. All your study data stays on your own device.
 
 - **Author**: BadCodeZ
-- **Version**: V1.1 (meta 2.0) · SW artwb-v2
-- **File**: `综合教资备考工作台.html` (2.95 MB)
+- **Version**: V1.2 (meta 2.0) · SW artwb-v22
+- **File**: `综合教资备考工作台.html` (2.49 MB)
 - **Questions**: 3,342 built-in questions covering all exam subjects
 - **Subjects**: 17 secondary school subjects (科三)
 - **Repository**: https://github.com/BadCodeZ/jiazi-practice-platform
@@ -29,6 +29,13 @@
 - **Lesson planning**: Built-in 12-element lesson plan editor with template library.
 - **Knowledge cards**: Chapter-based review cards with spaced repetition reminders.
 - **PDF/Word parsing**: On-demand parsing for uploaded documents (with offline fallback).
+- **Timed practice**: Optional countdown with last-minute highlight to train exam pacing.
+- **Enhanced summary**: Post-practice review card shows each answer, correct key, explanation and time spent; wrong in red, right in green; one-tap add to review plan.
+- **Dashboard**: New "Daily Review" card on home; new weekly report (7-day volume, accuracy trend, weak-chapter spread) on stats.
+- **AI self-quiz on knowledge cards**: Generate 3 quiz questions per card, auto-graded and logged.
+- **Keyboard flow + active recall**: 1–4 / A–D to answer, Space/Enter for next; "active recall" mode hides answers until revealed.
+- **Home cleanup**: Removed duplicate cumulative stats; home now focuses on today's tasks and actions.
+- **Question-bank fixes**: Corrected answers, explanations and chapter mappings for some questions.
 
 ### How to Use
 
@@ -47,8 +54,8 @@
 ### Technical Details
 
 - **Build**: Single-file HTML (all CSS, JS, and data inlined)
-- **MD5**: `7c10091b03f64b71083399b0a2c705cf`
-- **PWA**: Service worker `artwb-v2` for offline caching (requires http(s) access)
+- **MD5**: `db9f849a2f71248f23763a3ab766d7a2`
+- **PWA**: Service worker `artwb-v22` for offline caching (requires http(s) access)
 - **Data format**: AES-GCM encrypted sync packages (`SYNCPKG1`)
 - **Dependencies**: pdf.js, mammoth.js (loaded on demand for document parsing)
 
@@ -61,8 +68,8 @@
 **jiazi-practice-platform** 是一个**单文件离线网页应用**，用于教师资格证考试备考。它不需要安装、不需要注册、不需要服务器，打开浏览器就能用，所有学习数据只存在你自己的设备上。
 
 - **作者**: BadCodeZ
-- **版本**: V1.1（meta 2.0）· SW artwb-v2
-- **文件**: `综合教资备考工作台.html`（2.95 MB）
+- **版本**: V1.2（meta 2.0）· SW artwb-v22
+- **文件**: `综合教资备考工作台.html`（2.49 MB）
 - **题量**: 3342 道内置题，覆盖全部考试科目
 - **学科**: 17 个科三学科
 - **仓库地址**: https://github.com/BadCodeZ/jiazi-practice-platform
@@ -79,6 +86,13 @@
 - **备课模块**：内置十二要素教案编辑器、模板库，支持课标库和教材库上传引用。
 - **知识卡片**：按章节组织的复习卡片，支持到期复习提醒。
 - **PDF/Word 解析**：按需加载第三方解析器，支持 `.docx` 和 `.pdf` 文件解析（离线环境降级为手动粘贴）。
+- **练习限时倒计时**：可开启时间限制，剩余 1 分钟高亮提醒，模考前帮你掐准节奏。
+- **答题总结增强**：练习结束新增「答题卡回顾」，逐题展示作答、正确答案、解析与用时，错题标红、对题标绿，可一键加入复习计划。
+- **学习仪表盘**：今日视图新增「每日回顾」卡片；统计视图新增「周报」（7 天刷题量、正确率趋势、薄弱章节分布）。
+- **知识库 AI 自测**：每张知识卡可一键生成 3 道自测题，答题判分并留痕。
+- **练习键盘流 + 主动回忆**：支持 1–4 / A–D 选答、空格/Enter 进下一题；「主动回忆」模式先遮挡答案、按空格揭晓。
+- **首页精简**：去掉与统计页重复的累计统计，首页聚焦「今日待办」与「行动入口」。
+- **题库数据校正**：修正部分题目的答案、解析与章节归类错误。
 
 ### 如何使用
 
@@ -190,7 +204,7 @@ A: 离线环境自动降级为手动粘贴。CAJ 文件请先转 PDF。
 ### 给分享者
 
 - **单文件分发**：直接分享 `综合教资备考工作台.html` 一个文件即可（约 2.95 MB）
-- **保留署名**：保留作者 **BadCodeZ** 与「正式版 V1.1」标识
+- **保留署名**：保留作者 **BadCodeZ** 与「正式版 V1.2」标识
 - **覆盖 html 不影响用户数据**：用同名新 html 覆盖，浏览器 `localStorage` 中的 `artwb_v2_data` 不动，用户记录保留
 - **版本线提醒**：网页端 V1（meta 1.0）与安卓端版本号互不对齐属正常，仅数据互通
 
@@ -199,10 +213,10 @@ A: 离线环境自动降级为手动粘贴。CAJ 文件请先转 PDF。
 | 项目 | 值 |
 |------|------|
 | 文件 | 综合教资备考工作台.html |
-| 大小 | 2.95 MB（3,097,824 字节） |
-| MD5 | `7c10091b03f64b71083399b0a2c705cf` |
-| 内部版本 | meta 1.0 |
-| SW 版本 | artwb-v2 |
+| 大小 | 2.49 MB（2,606,758 字节） |
+| MD5 | `db9f849a2f71248f23763a3ab766d7a2` |
+| 内部版本 | meta 2.0 |
+| SW 版本 | artwb-v22 |
 | 内置题量 | 3342 道 |
 | 科三学科 | 17 个 |
 | 数据键名 | `artwb_v2_data`（localStorage） |
